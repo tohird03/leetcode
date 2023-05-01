@@ -54,7 +54,102 @@ let n = 3;
 // console.log(shuffle(nums, n));
 
 // Problem 7
-var finalValueAfterOperations = function(operations) {
-  return operations
+// var finalValueAfterOperations = function(operations) {
+//   let count = 0
+//   operations.map(item => {
+//     let removeX = item.split('X').join('')
+
+//     if(removeX == '++') {
+//       count++
+//     }else {
+//       count--
+//     }
+//   })
+
+//   return count
+// };
+
+// console.log(finalValueAfterOperations(["X++","++X","--X","X--"]));
+
+// Problem 8
+var numIdenticalPairs = function(nums) {
+  let count = 0
+  for (let i = 0; i <= nums.length; i++) {
+    for (let j = i+1; j <= nums.length; j++) {
+      if(nums[i] == nums[j] && i < j) {
+        count++
+      }
+    }
+  }
+
+  return count
 };
-console.log(finalValueAfterOperations(["X++","++X","--X","X--"]));
+
+// console.log(numIdenticalPairs([1,2,3,1,1,3]));
+
+// Problem 9
+// https://leetcode.com/problems/richest-customer-wealth/
+
+var maximumWealth = function(accounts) {
+  return Math.max(...accounts.map(value => value.reduce((a, b) => a + b)))
+};
+
+// console.log(maximumWealth([[2,8,7],[7,1,3],[1,9,5]]));
+
+// Problem 9
+// https://leetcode.com/problems/running-sum-of-1d-array/
+
+var runningSum = function(nums) {
+  let arr =[]
+  for (let i = 0; i < nums.length; i++) {
+    let count = 0
+    for (let j = 0; j <= i; j++) {
+      count+=nums[j]
+    }
+
+    arr.push(count)
+  }
+  return arr
+};
+// console.log(runningSum([1,2,3,4]));
+
+// Problem 10
+// https://leetcode.com/problems/maximum-number-of-words-found-in-sentences/
+var mostWordsFound = function(sentences) {
+  return Math.max(...sentences.map(item => item.split(' ').length))
+};
+
+// console.log(mostWordsFound(["alice and bob love leetcode", "i think so too", "this is great thanks very much"]));
+
+// Problem 11
+// https://leetcode.com/problems/sort-the-students-by-their-kth-score/
+function sortTheStudents(score, k) {
+  const kthScores = score.map(row => row[k]);
+  const sortedIndices = kthScores
+    .map((_, i) => i)
+    .sort((i, j) => kthScores[j] - kthScores[i]);
+  const sortedScore = sortedIndices.map(i => score[i]);
+  return sortedScore;
+}
+
+// console.log(sortTheStudents([[10,6,9,1],[7,5,11,2],[4,8,3,15]], 2));
+
+// Problem 12
+// https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/
+var smallerNumbersThanCurrent = function(nums) {
+  let arr = []
+  for (let i = 0; i < nums.length; i++) {
+    let count = 0
+    for (let j = 0; j < nums.length; j++) {
+      if(nums[i] > nums[j]) {
+        count++
+      }
+    }
+
+    arr.push(count)
+  }
+
+  return arr
+};
+
+console.log(smallerNumbersThanCurrent([8, 1, 2, 2, 3]));
