@@ -151,5 +151,100 @@ var smallerNumbersThanCurrent = function(nums) {
 
   return arr
 };
+// console.log(smallerNumbersThanCurrent([8, 1, 2, 2, 3]));
 
-console.log(smallerNumbersThanCurrent([8, 1, 2, 2, 3]));
+// Problem 13
+// https://leetcode.com/problems/defanging-an-ip-address/
+var defangIPaddr = function(address) {
+  return address.split('.').join('[.]')
+};
+
+// console.log(defangIPaddr("1.1.1.1"));
+
+// Problem 14
+// https://leetcode.com/problems/goal-parser-interpretation/
+var interpret = function(command) {
+  return command.split("()").join('o').split("(al)").join('al')
+};
+
+// console.log(interpret("G()()()()(al)"));
+
+// Problem 15
+// https://leetcode.com/problems/shuffle-string/
+var restoreString = function(s, indices) {
+  return indices.map((item, index) => [item, s[index]]).sort((itemOne, itemTwo) => itemOne[0] - itemTwo[0]).map(item => item[1]).join('')
+};
+// console.log(restoreString("codeleet", [4,5,6,7,0,2,1,3]));
+
+// Problem 16
+var sortSentence = function(s) {
+  return s.split(' ').map(item => [+item.slice(-1), item.slice(0, -1)]).sort((a, b) => a[0] - b[0]).map(item => item[1]).join(' ')
+};
+
+// console.log(sortSentence("is2 sentence4 This1 a3"));
+
+// Problem 17
+// https://leetcode.com/problems/check-if-two-string-arrays-are-equivalent/
+var arrayStringsAreEqual = (word1, word2) => word1.join('') == word2.join('')
+
+// console.log(arrayStringsAreEqual(["abc", "d", "defg"],  ["abcddefg"]));
+
+// Problem 18
+let englishWord = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+var checkIfPangram = function(sentence) {
+  return englishWord.filter((item, index) => sentence.includes(item)).length == englishWord.length
+};
+
+// console.log(checkIfPangram("thequickbrownfoxjumpsoverthelazydog"));
+
+// Problem 19
+// https://leetcode.com/problems/palindrome-number/
+var isPalindrome = function(x) {
+  let n = x + ''
+  if(n.length % 2 == 0) {
+    return n.slice(0, n.length/2) == n.slice(n.length/2).split('').reverse().join('')
+  }else {
+    return n.slice(0, (n.length - 1)/2) == n.slice((n + 1).length/2).split('').reverse().join('')
+  }
+};
+
+// console.log(isPalindrome(10));
+
+
+// Problem 20
+// https://leetcode.com/problems/xor-operation-in-an-array/
+var xorOperation = function(n, start) {
+  let num=0
+  for (let i = start; i <=start + (n-1)*2; i+=2) {
+    num^=i
+  }
+  return num
+};
+
+// console.log(xorOperation(4, 3));
+
+// Problem 21
+var rotate = function(matrix) {
+  let arr = []
+  for (let i = matrix.length - 1; i >= 0; i--) {
+    let arrNested = []
+    matrix.forEach((item, index) => arrNested.push(item[i]))
+    arr.push(arrNested.reverse())
+  }
+
+  return arr.reverse()
+};
+
+// console.log(rotate([[1,2,3],[4,5,6],[7,8,9]]));
+
+// Probelem 22
+var maximumXOR = function(nums) {
+  let xor=0
+  for (let i = 0; i < nums.length; i++) {
+    xor+=nums[i]
+  }
+
+  return xor
+};
+
+console.log(maximumXOR[1,2,3,9,2]);
